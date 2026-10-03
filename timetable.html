@@ -1,100 +1,143 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시간표</title>
+    <style>
+        /* 1. 테이블 전체 디자인 */
+        table {
+            border-collapse: collapse; /* 두 줄인 테두리를 한 줄로 깔끔하게 합침 */
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto; /* 테이블을 화면 가운데로 정렬 */
+            text-align: center; /* 글자를 가운데 정렬 */
+            font-family: '맑은 고딕', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* 2. 테두리(border) 및 여백(padding) 설정 */
+        th, td {
+            border: 2px solid #dcdcdc; /* 깔끔한 회색 테두리 적용 */
+            padding: 15px 10px; /* 셀 안쪽 상하 15px, 좌우 10px 여백 적용 */
+        }
+
+        /* 3. 배경색(background-color) 설정 */
+        /* 요일(헤더) 배경색 */
+        th {
+            background-color: #4A90E2; /* 짙은 파란색 */
+            color: white; /* 글자색은 흰색 */
+            font-weight: bold;
+        }
+
+        /* 호수(작은 글씨) 색상 살짝 연하게 */
+        small {
+            color: #555;
+        }
+
+        /* 과목별 배경색 지정 (각 td에 부여된 class 기준) */
+        .web { background-color: #D4E6F1; }       /* 웹프로그래밍: 연한 파랑 */
+        .db { background-color: #E8DAEF; }        /* 데이터베이스 설계: 연한 보라 */
+        .chapel { background-color: #FCF3CF; }    /* 채플: 연한 노랑 */
+        .math { background-color: #D5F5E3; }      /* 대학수학: 연한 초록 */
+        .oop { background-color: #D1F2EB; }       /* 객체지향 프로그래밍: 연한 민트 */
+        .ecommerce { background-color: #F5EEF8; } /* 전자상거래: 아주 연한 보라 */
+        .life { background-color: #FADBD8; }      /* 인생설계와 진로: 연한 빨강 */
+        
+    </style>
 </head>
 <body>
     <h1>시간표</h1>
-        <table border = 1>
-            <thead>
-                <tr>
-                    <th>일요일</th>
-                    <th>월요일</th>
-                    <th>화요일</th>
-                    <th>수요일</th>
-                    <th>목요일</th>
-                    <th>금요일</th>
-                    <th>토요일</th>
-                </tr>
-            </thead>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td rowspan="3">웹프로그래밍<br><small>바울관 303호</small></td>
-                    <td>&nbsp;</td>
-                    <td rowspan="3">데이터베이스 설계<br><small>바울관 303호</small></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>채플<br><small>대강당</small></td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td rowspan="3">대학수학<br><small>제2 과학관 106호</small></td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td rowspan="3">객체지향 프로그래밍<br><small>제1 실습관 207호</small></td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td rowspan="3">전자상거래<br><small>바울관 312호</small></td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>인생설계와 진로<br><small>바울관 203호</small></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
+    <!-- 기존 border=1 속성은 지우고 CSS로 제어합니다 -->
+    <table>
+        <thead>
+            <tr>
+                <th>일요일</th>
+                <th>월요일</th>
+                <th>화요일</th>
+                <th>수요일</th>
+                <th>목요일</th>
+                <th>금요일</th>
+                <th>토요일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <!-- 과목이 있는 셀에 class 속성을 추가했습니다 -->
+                <td rowspan="3" class="web">웹프로그래밍<br><small>바울관 303호</small></td>
+                <td>&nbsp;</td>
+                <td rowspan="3" class="db">데이터베이스 설계<br><small>바울관 303호</small></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="chapel">채플<br><small>대강당</small></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td rowspan="3" class="math">대학수학<br><small>제2 과학관 106호</small></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td rowspan="3" class="oop">객체지향 프로그래밍<br><small>제1 실습관 207호</small></td>
+                <td></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td rowspan="3" class="ecommerce">전자상거래<br><small>바울관 312호</small></td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="life">인생설계와 진로<br><small>바울관 203호</small></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
