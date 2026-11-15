@@ -16,13 +16,48 @@
         $('.op').click(function(){
             let cur = $('#disp2').val();
             let opt = $(this).val();
-            $('#disp2').val(cur + opt);
-            if(opt != "=") {
+            if(opt == "AC") {
+                $('#disp1').val('');
+                $('#disp2').val('');
+            }
+            else if(opt != "=") {
                 $('#disp2').val(cur + opt);
             }
             else {
+                // eval 대신 직접 계산
+                // 1. 숫자와 연산자 나누기  "12+3*4" -> [12, '+', 3, '*', 4]
+                let arr = [];
+                let num = '';
+                for(let i = 0; i < cur.length; i++) {
+                    let ch = cur[i];
+                    if(ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+                        arr.push(Number(num));
+                        arr.push(ch);
+                        num = '';
+                    }
+                    else {
+                        num += ch;
+                    }
+                }
+                arr.push(Number(num));
+
+                // 2. *, / 먼저 계산  [12, '+', 3, '*', 4] -> [12, '+', 12]
+                let arr2 = [arr[0]];
+                for(let i = 1; i < arr.length; i += 2) {
+                    if(arr[i] == '*') arr2[arr2.length - 1] *= arr[i + 1];
+                    else if(arr[i] == '/') arr2[arr2.length - 1] /= arr[i + 1];
+                    else arr2.push(arr[i], arr[i + 1]);
+                }
+
+                // 3. +, - 계산  [12, '+', 12] -> 24
+                let result = arr2[0];
+                for(let i = 1; i < arr2.length; i += 2) {
+                    if(arr2[i] == '+') result += arr2[i + 1];
+                    else result -= arr2[i + 1];
+                }
+
                 $('#disp1').val(cur);
-                $('#disp2').val(eval(cur));s
+                $('#disp2').val(result);
             }
         });
     });
