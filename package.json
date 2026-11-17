@@ -1,5 +1,24 @@
 {
+  "name": "web_a",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/EthanlOLOO/web_a#readme",
+  "bugs": {
+    "url": "https://github.com/EthanlOLOO/web_a/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanlOLOO/web_a.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "examjs1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "ansi-colors": "^4.1.3"
-  }
+  },
+  "devDependencies": {}
 }
